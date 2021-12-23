@@ -1,6 +1,4 @@
-from logging import log
 import sqlite3
-import hashlib
 
 DB_NAME = 'dbTeste.sqlite'
 

@@ -4,8 +4,22 @@
 <div class="row"><h3>Dados Coletados</h3></div>
 <div class="row">
     <div class="col-md-4">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">x</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         <div class="card card-body">
-            <form action="" method="POST">
+            <form action="{{ url_for('addUser')}}" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" name="flogin" placeholder="Login">
                 </div>
@@ -20,7 +34,7 @@
         </div>
     </div>
     <div class="col-md-8">
-        <table class="table table-striped table-bordered" style="width: 100%;">
+        <table id='tbl_users' class="table table-striped table-bordered" style="width: 100%;">
             <thead>
                 <tr>
                     <td>Id</td>
